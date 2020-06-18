@@ -14,13 +14,22 @@
     <td>
       {{node.name}}
     </td>
-    <td>
+    <td *ngIf="editNode.name != node.name">
       {{node.totalCapacity}}
     </td>
-    <td>
+    <td *ngIf="editNode.name == node.name">
+      <input [(ngModel)]="editNode.totalCapacity" value="{{node.totalCapacity}}"/>
+    </td>
+    <td *ngIf="editNode.name != node.name">
       <button
         [class.edit]="true"
         (click)="edit(node);$event.stopPropagation()">Edit
+      </button>
+    </td>
+    <td *ngIf="editNode.name == node.name">
+      <button
+        [class.edit]="true"
+        (click)="save();$event.stopPropagation()">Save
       </button>
     </td>
   </tr>

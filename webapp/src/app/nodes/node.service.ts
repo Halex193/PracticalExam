@@ -29,9 +29,8 @@ export class NodeService
 
     updateItem(item: Node): Observable<any>
     {
-        const url = this.identify(URL, this.getId(item))
         const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-        return this.httpClient.put<Node>(url, item, {headers: headers});
+        return this.httpClient.put<Node>(URL, item, {headers: headers});
     }
 
     deleteItem(id: string): Observable<any>

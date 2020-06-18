@@ -16,6 +16,7 @@ export class NodesComponent implements OnInit
   @Input() formItem: Node = new Node();
   entityName = "Node"
   adding = false;
+  editNode: Node = new Node()
 
   constructor(protected service: NodeService, protected router: Router)
   {
@@ -63,8 +64,8 @@ export class NodesComponent implements OnInit
 
   update()
   {
-    console.log("Updating:", this.formItem)
-    this.service.updateItem(this.formItem)
+    console.log("Updating:", this.editNode)
+    this.service.updateItem(this.editNode)
       .subscribe(_ => this.getItems(), () => this.errorMessage = this.entityName + " does not exist in the database");
   }
 
@@ -86,11 +87,17 @@ export class NodesComponent implements OnInit
 
   edit(node: Node)
   {
-
+    this.editNode.name = node.name
   }
 
   enableAdd()
   {
     this.adding = true;
+  }
+
+  save()
+  {
+    this.update()
+    this.editNode = new Node()
   }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
@@ -56,13 +57,7 @@ public class NodeServiceImpl implements NodeService
         Node node = new Node(name, totalCapacity);
         log.trace("Updating node {}", node);
         Example<Node> example = Example.of(new Node(name, null));
-        Node oldNode = nodeRepository
-                .findOne(example)
-                .orElseThrow(() -> new ElementNotFoundException(
-                        String.format(
-                                "Node %s does not exist",
-                                name
-                        )));
+        Node oldNode = nodeRepository.findAll().stream().filter(n -> n.getName().equals(name)).findAny().get();
         oldNode.setTotalCapacity(totalCapacity);
         nodeRepository.save(oldNode);
         return oldNode;

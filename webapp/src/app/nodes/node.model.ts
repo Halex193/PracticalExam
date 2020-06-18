@@ -1,5 +1,6 @@
 export class Node
 {
-    name: string;
-    totalCapacity: number;
+
+  name: string;
+  totalCapacity: number;
 }
