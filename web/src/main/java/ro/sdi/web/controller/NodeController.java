@@ -52,6 +52,11 @@ public class NodeController
     public ResponseEntity<?> addNode(@RequestBody NodeDto nodeDto)
     {
         Node node = nodeConverter.toModel(nodeDto);
+        if(!node.getName().matches(".{5,}") || node.getTotalCapacity() <= 0)
+        {
+            log.trace("Node data invalid: {}", node);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
         try
         {
             nodeService.add(node.getName(), node.getTotalCapacity());

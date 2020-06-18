@@ -58,7 +58,7 @@ export class NodesComponent implements OnInit
     this.adding=false;
     console.log("Adding:", this.formItem)
     this.service.addItem(this.formItem)
-      .subscribe(_ => this.getItems(), () => this.errorMessage = this.entityName + " is invalid!");
+      .subscribe(_ => this.getItems(), () => this.errorMessage = this.entityName + " data is invalid!");
   }
 
   update()
