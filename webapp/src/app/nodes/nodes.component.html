@@ -25,3 +25,25 @@
     </td>
   </tr>
 </table>
+<button
+  [class.adding]="true"
+  (click)="enableAdd();$event.stopPropagation()">Add node
+</button>
+<div *ngIf="adding">
+  <div>
+    <label>Name:
+      <input [(ngModel)]="formItem.name" placeholder="Name" #name="ngModel"/>
+    </label>
+  </div>
+
+  <div>
+    <label>Total Capacity:
+      <input type="number" [(ngModel)]="formItem.totalCapacity" placeholder="Total Capacity" #totalCapacity="ngModel">
+    </label>
+  </div>
+
+  <button
+    [class.add]="true"
+    (click)="add();$event.stopPropagation()">Submit
+  </button>
+</div>

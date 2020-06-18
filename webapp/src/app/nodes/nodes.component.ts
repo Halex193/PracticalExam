@@ -15,6 +15,7 @@ export class NodesComponent implements OnInit
   items: Array<Node>;
   @Input() formItem: Node = new Node();
   entityName = "Node"
+  adding = false;
 
   constructor(protected service: NodeService, protected router: Router)
   {
@@ -54,9 +55,10 @@ export class NodesComponent implements OnInit
 
   add()
   {
+    this.adding=false;
     console.log("Adding:", this.formItem)
     this.service.addItem(this.formItem)
-      .subscribe(_ => this.getItems(), () => this.errorMessage = this.entityName + " already exists in the database");
+      .subscribe(_ => this.getItems(), () => this.errorMessage = this.entityName + " is invalid!");
   }
 
   update()
@@ -82,4 +84,13 @@ export class NodesComponent implements OnInit
     this.router.navigate(["/identifiable", 5])
   }
 
+  edit(node: Node)
+  {
+
+  }
+
+  enableAdd()
+  {
+    this.adding = true;
+  }
 }
