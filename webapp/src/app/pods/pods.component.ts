@@ -15,6 +15,7 @@ export class PodsComponent implements OnInit
   items: Array<Pod>;
   @Input() formItem: Pod = new Pod();
   entityName = "Pod"
+  cost: number = -1
 
   constructor(protected service: PodService, protected router: Router)
   {
@@ -86,5 +87,11 @@ export class PodsComponent implements OnInit
   addNew()
   {
     this.router.navigate(["/pods/new"])
+  }
+
+  filter()
+  {
+    if (this.cost != -1)
+    this.items = this.items.filter(p => p.cost < this.cost)
   }
 }

@@ -1,5 +1,11 @@
 <h2>{{entityName}}s</h2>
+<label>
 
+  <input [(ngModel)]="cost" type="text">
+  <button
+    (click)="filter();$event.stopPropagation()">Filter pods with cost less than
+  </button>
+</label>
 <button
   (click)="addNew();$event.stopPropagation()">Add pod
 </button>
