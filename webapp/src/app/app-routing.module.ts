@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {SensorsComponent} from "./sensors/sensors.component";
+import {NodesComponent} from "./nodes/nodes.component";
 
 
 const routes: Routes = [
-  {path: "all", component: SensorsComponent},
+  {path: "nodes", component: NodesComponent},
 ];
 
 @NgModule({

@@ -3,7 +3,13 @@
     <option name="OPEN_IN_BROWSER" value="false" />
     <option name="COMMON_VM_ARGUMENTS" value="-Dspring.profiles.active=prod" />
     <option name="UPDATING_POLICY" value="restart-server" />
-    <deployment />
+    <deployment>
+      <artifact name="Gradle : ro.sdi : web-1.0.war">
+        <settings>
+          <option name="CONTEXT_PATH" value="/" />
+        </settings>
+      </artifact>
+    </deployment>
     <server-settings>
       <option name="BASE_DIRECTORY_NAME" value="Unnamed_PracticalExam_2" />
     </server-settings>
@@ -62,7 +68,9 @@
     </ConfigurationWrapper>
     <method v="2">
       <option name="Make" enabled="true" />
-      <option name="BuildArtifacts" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="Gradle : ro.sdi : web-1.0.war" />
+      </option>
     </method>
   </configuration>
 </component>

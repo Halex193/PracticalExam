@@ -1,0 +1,27 @@
+<h2>{{entityName}}s</h2>
+
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Total Capacity
+    </th>
+  </tr>
+  <tr *ngFor="let node of items"
+      (click)="onSelect(node)">
+    <td>
+      {{node.name}}
+    </td>
+    <td>
+      {{node.totalCapacity}}
+    </td>
+    <td>
+      <button
+        [class.edit]="true"
+        (click)="edit(node);$event.stopPropagation()">Edit
+      </button>
+    </td>
+  </tr>
+</table>

@@ -4,13 +4,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import { SensorsComponent } from './sensors/sensors.component';
-import {SensorService} from "./sensors/sensor.service";
+import { NodesComponent } from './nodes/nodes.component';
+import {NodeService} from "./nodes/node.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SensorsComponent
+    NodesComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +18,7 @@ import {SensorService} from "./sensors/sensor.service";
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [SensorService],
+  providers: [NodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

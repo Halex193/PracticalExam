@@ -1,1 +1,3 @@
 rootProject.name = 'PracticalExam'
+include(':core')
+include(':web')
