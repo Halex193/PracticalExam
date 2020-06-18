@@ -1,0 +1,39 @@
+<br />
+<br />
+<span class="error">{{errorMessage}}</span>
+<div>
+  <label>Name:
+    <input [(ngModel)]="formItem.name" placeholder="Name" required pattern="..."
+           #name="ngModel"/>
+  </label>
+</div>
+
+<div *ngIf="name.invalid && (name.dirty || name.touched)" class="validation-error">
+
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors.pattern">
+    Name must be only 3 characters long
+  </div>
+</div>
+<div>
+  <label>Cost:
+    <input type="number" [(ngModel)]="formItem.cost" placeholder="Cost" required min="0"
+           #id="ngModel">
+  </label>
+</div>
+
+<div *ngIf="id.invalid && (id.dirty || id.touched)" class="validation-error">
+
+  <div *ngIf="id.errors.required">
+    Cost is required.
+  </div>
+  <div *ngIf="id.errors.min">
+    Cost must be minimum 0
+  </div>
+</div>
+
+<button
+  (click)="add();$event.stopPropagation()">Submit
+</button>

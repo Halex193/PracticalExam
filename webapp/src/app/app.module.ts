@@ -8,12 +8,14 @@ import { NodesComponent } from './nodes/nodes.component';
 import {NodeService} from "./nodes/node.service";
 import { PodsComponent } from './pods/pods.component';
 import {PodService} from "./pods/pod.service";
+import {AddPodComponent} from "./addpod/addpod.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NodesComponent,
-    PodsComponent
+    PodsComponent,
+    AddPodComponent
   ],
   imports: [
     BrowserModule,
