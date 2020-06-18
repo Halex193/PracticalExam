@@ -15,7 +15,7 @@ export class PodsComponent implements OnInit
   items: Array<Pod>;
   @Input() formItem: Pod = new Pod();
   entityName = "Pod"
-  cost: number = -1
+  cost: number
 
   constructor(protected service: PodService, protected router: Router)
   {
@@ -32,8 +32,8 @@ export class PodsComponent implements OnInit
       .subscribe(
         items =>
         {
-          // this.items = this.filterAndSortItems(items);
           this.items = items;
+          this.filter()
           console.log("Received items: ", items)
         },
         () => this.errorMessage = "Items not available"
@@ -91,7 +91,7 @@ export class PodsComponent implements OnInit
 
   filter()
   {
-    if (this.cost != -1)
-    this.items = this.items.filter(p => p.cost < this.cost)
+    if (this.cost)
+      this.items = this.items.filter(p => p.cost < this.cost)
   }
 }
