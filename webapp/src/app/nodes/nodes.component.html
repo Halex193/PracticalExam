@@ -14,22 +14,22 @@
     <td>
       {{node.name}}
     </td>
-    <td *ngIf="editNode.name != node.name">
+    <td *ngIf="!editable(node)">
       {{node.totalCapacity}}
     </td>
-    <td *ngIf="editNode.name == node.name">
-      <input [(ngModel)]="editNode.totalCapacity" value="{{node.totalCapacity}}"/>
+    <td *ngIf="editable(node)">
+      <input (keyup)="onKey($event, node)" value="{{getCapacity(node)}}"/>
     </td>
-    <td *ngIf="editNode.name != node.name">
+    <td *ngIf="!editable(node)">
       <button
         [class.edit]="true"
         (click)="edit(node);$event.stopPropagation()">Edit
       </button>
     </td>
-    <td *ngIf="editNode.name == node.name">
+    <td *ngIf="editable(node)">
       <button
         [class.edit]="true"
-        (click)="save();$event.stopPropagation()">Save
+        (click)="save(node);$event.stopPropagation()">Save
       </button>
     </td>
   </tr>
@@ -47,7 +47,8 @@
 
   <div>
     <label>Total Capacity:
-      <input type="number" [(ngModel)]="formItem.totalCapacity" placeholder="Total Capacity" #totalCapacity="ngModel">
+      <input type="number" [(ngModel)]="formItem.totalCapacity" placeholder="Total Capacity"
+             #totalCapacity="ngModel">
     </label>
   </div>
 
