@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import { NodesComponent } from './nodes/nodes.component';
 import {NodeService} from "./nodes/node.service";
 import { PodsComponent } from './pods/pods.component';
+import {PodService} from "./pods/pod.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { PodsComponent } from './pods/pods.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [NodeService],
+  providers: [NodeService, PodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

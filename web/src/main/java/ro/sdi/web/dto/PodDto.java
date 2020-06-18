@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class PodDto
 {
+    private long id;
     private String name;
     private int cost;
 }

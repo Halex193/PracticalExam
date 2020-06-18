@@ -18,6 +18,6 @@ public class NodeConverter implements Converter<Node, NodeDto>
     @Override
     public NodeDto toDto(Node node)
     {
-        return new NodeDto(node.getName(), node.getTotalCapacity());
+        return new NodeDto(node.getId(), node.getName(), node.getTotalCapacity());
     }
 }

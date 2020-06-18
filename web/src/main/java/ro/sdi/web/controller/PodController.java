@@ -40,7 +40,7 @@ public class PodController
     }
 
 
-    /*@RequestMapping(value = "/pods", method = GET)
+    @RequestMapping(value = "/pods", method = GET)
     public List<PodDto> getPods()
     {
         List<Pod> pods = podService.getPods();
@@ -54,7 +54,7 @@ public class PodController
         Pod pod = podConverter.toModel(podDto);
         try
         {
-            podService.addPod(pod.getId(), pod.getName());
+            podService.add(pod.getName(), pod.getCost());
         }
         catch (AlreadyExistingElementException e)
         {
@@ -66,11 +66,11 @@ public class PodController
     }
 
     @RequestMapping(value = "/pods/{id}", method = DELETE)
-    public ResponseEntity<?> deletePod(@PathVariable int id)
+    public ResponseEntity<?> deletePod(@PathVariable long id)
     {
         try
         {
-            podService.deletePod(id);
+            podService.delete(id);
         }
         catch (ElementNotFoundException e)
         {
@@ -81,25 +81,7 @@ public class PodController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-    @RequestMapping(value = "/pods/{id}", method = PUT)
-    public ResponseEntity<?> updatePod(@PathVariable int id, @RequestBody PodDto podDto)
-    {
-        Pod pod = podConverter.toModel(podDto);
-        try
-        {
-            podService.updatePod(id, pod.getName());
-        }
-        catch (ElementNotFoundException e)
-        {
-            log.trace("Pod with id {} could not be updated", id);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        log.trace("Pod with id {} was updated: {}", id, pod);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/pods/filter/{name}", method = GET)
+    /*@RequestMapping(value = "/pods/filter/{name}", method = GET)
     public List<PodDto> filterPodsByName(@PathVariable String name)
     {
         return podConverter.toDtos(podService.filterPodsByName(name));

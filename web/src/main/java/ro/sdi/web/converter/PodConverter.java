@@ -18,6 +18,6 @@ public class PodConverter implements Converter<Pod, PodDto>
     @Override
     public PodDto toDto(Pod pod)
     {
-        return new PodDto(pod.getName() ,pod.getCost());
+        return new PodDto(pod.getId(), pod.getName() ,pod.getCost());
     }
 }

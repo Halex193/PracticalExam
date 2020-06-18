@@ -71,11 +71,12 @@ export class NodesComponent implements OnInit
 
   getId(node: Node)
   {
-    return node.name.toString()
+    return node.id.toString()
   }
 
   copyItem(item: Node)
   {
+    this.formItem.id = item.id
     this.formItem.name = item.name
     this.formItem.totalCapacity = item.totalCapacity
   }
@@ -125,6 +126,7 @@ export class NodesComponent implements OnInit
 
   onKey(value: any, formNode: Node)
   {
+    // @ts-ignore
     const totalCapacity = event.target.value;
     for (let node of this.editNodes)
     {
